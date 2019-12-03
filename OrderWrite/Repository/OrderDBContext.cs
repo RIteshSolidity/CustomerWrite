@@ -20,7 +20,7 @@ namespace OrderWrite.Repository
 
         }
 
-        protected virtual DbSet<Orders> orders { get; set; }
+        public virtual DbSet<Orders> orders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder) {
             builder.Entity<Orders>().HasKey("OrderId");
