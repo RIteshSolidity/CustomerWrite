@@ -16,6 +16,7 @@ using OrderWrite.Models;
 using OrderWrite.Commands;
 using OrderWrite.Events;
 using OrderWrite.Services;
+using OrderWrite.Infrastructure;
 
 namespace OrderWrite
 {
@@ -37,6 +38,11 @@ namespace OrderWrite
                     Configuration.GetConnectionString("OrdersWritecs")));
             services.AddScoped<IOrderRepository, OrdersRepository>();
             services.AddScoped<ICommandHandler, CommandHandlers>();
+            services.AddScoped<IServicebusSender, ServiceBusSender>(
+                aa => new ServiceBusSender(
+                        Configuration.GetConnectionString("ServiceBuscs"),
+                        Configuration.GetValue<string>("TopicName")
+                    ));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

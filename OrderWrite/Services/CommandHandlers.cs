@@ -6,6 +6,7 @@ using OrderWrite.Commands;
 using OrderWrite.Models;
 using OrderWrite.Repository;
 using OrderWrite.Events;
+using OrderWrite.Infrastructure;
 
 
 namespace OrderWrite.Services
@@ -16,9 +17,11 @@ namespace OrderWrite.Services
     public class CommandHandlers : ICommandHandler
     {
         private IOrderRepository _repo;
-        public CommandHandlers(IOrderRepository repo)
+        private IServicebusSender _sender;
+        public CommandHandlers(IOrderRepository repo, IServicebusSender sender)
         {
             _repo = repo;
+            _sender = sender;
         }
         public void HandleCommand(ICommand cmd)
         {
@@ -27,13 +30,13 @@ namespace OrderWrite.Services
                     CreateOrder command = (CreateOrder)cmd;
                     
                     CustomerName customer = CustomerName.CustomerNameFactory(
-                        command.firstname, command.lastname, "Hyderabad");
+                        command.firstname, command.lastname, "hyderabad");
 
                     Orders o = new Orders(command.OrderId, customer, command.OrderDate, command.OrderItems);
                     _repo.NewOrder(o);
                     List<IEvents> events = o.GetChanges().ToList();
-                    foreach (var e in events) { 
-                        // do something 
+                    foreach (var e in events) {
+                        _sender.SendMessage(e);
                     }
                     break;
                 default:
