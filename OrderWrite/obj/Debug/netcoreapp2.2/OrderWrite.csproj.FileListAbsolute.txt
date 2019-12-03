@@ -1,0 +1,15 @@
+C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\obj\Debug\netcoreapp2.2\OrderWrite.AssemblyInfoInputs.cache
+C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\obj\Debug\netcoreapp2.2\OrderWrite.AssemblyInfo.cs
+C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\bin\Debug\netcoreapp2.2\OrderWrite.deps.json
+C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\bin\Debug\netcoreapp2.2\OrderWrite.runtimeconfig.json
+C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\bin\Debug\netcoreapp2.2\OrderWrite.runtimeconfig.dev.json
+C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\bin\Debug\netcoreapp2.2\OrderWrite.dll
+C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\bin\Debug\netcoreapp2.2\OrderWrite.pdb
+C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\obj\Debug\netcoreapp2.2\OrderWrite.RazorAssemblyInfo.cache
+C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\obj\Debug\netcoreapp2.2\OrderWrite.RazorAssemblyInfo.cs
+C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\obj\Debug\netcoreapp2.2\OrderWrite.RazorTargetAssemblyInfo.cache
+C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\obj\Debug\netcoreapp2.2\OrderWrite.dll
+C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\obj\Debug\netcoreapp2.2\OrderWrite.pdb
