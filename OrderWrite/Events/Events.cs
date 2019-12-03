@@ -7,7 +7,9 @@ using OrderWrite.Models;
 namespace OrderWrite.Events
 {
 
-    public interface IEvents { }
+    public interface IEvents {
+        string EventType { get; set; }
+    }
     public class OrderCreated : IEvents
     {
         public int OrderId { get; set; }
@@ -15,7 +17,13 @@ namespace OrderWrite.Events
         public DateTime OrderDate { get; set; }
 
         public List<OrderLineItems> OrderItems { get; set; }
+        public string EventType { get; set; }
+    }
 
+    public class OrderDateUpdated : IEvents
+    {
+        public int OrderId { get; set; }
+        public DateTime OrderDate { get; set; }
         public string EventType { get; set; }
     }
 }

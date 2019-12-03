@@ -13,3 +13,4 @@ C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\obj\Debug\netcoreapp2.
 C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\obj\Debug\netcoreapp2.2\OrderWrite.RazorTargetAssemblyInfo.cache
 C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\obj\Debug\netcoreapp2.2\OrderWrite.dll
 C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\obj\Debug\netcoreapp2.2\OrderWrite.pdb
+C:\Users\citynextadmin\source\repos\OrderWrite\OrderWrite\obj\Debug\netcoreapp2.2\OrderWrite.csprojAssemblyReference.cache

@@ -13,6 +13,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using OrderWrite.Repository;
 using OrderWrite.Models;
+using OrderWrite.Commands;
+using OrderWrite.Events;
+using OrderWrite.Services;
 
 namespace OrderWrite
 {
@@ -33,6 +36,7 @@ namespace OrderWrite
                 options => options.UseSqlServer(
                     Configuration.GetConnectionString("OrdersWritecs")));
             services.AddScoped<IOrderRepository, OrdersRepository>();
+            services.AddScoped<ICommandHandler, CommandHandlers>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

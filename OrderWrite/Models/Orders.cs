@@ -63,21 +63,30 @@ namespace OrderWrite.Models
             
         }
 
-        public void UpdateOrderDate(DateTime odt) {
-            OrderDate = odt;
+        public void UpdateOrderDate(int orderid,DateTime odt) {
+            apply(new OrderDateUpdated() { 
+                OrderDate = odt,
+                OrderId = orderid,
+                EventType = "OrderDateUpdated"
+            });
             CheckValidity();
         }
 
         public override void when(IEvents myevent)
         {
-            switch (state)
+            switch (myevent.EventType)
             {
-                case OrderState.OrderCreated:
+                case "OrderCreated":
                     this.customer = ((OrderCreated)myevent).customer;
                     this.OrderDate = ((OrderCreated)myevent).OrderDate;
                     this.OrderId = ((OrderCreated)myevent).OrderId;
                     this.OrderItems = ((OrderCreated)myevent).OrderItems;
                      break;
+                case "OrderDateUpdated":
+                    this.OrderDate = ((OrderDateUpdated)myevent).OrderDate;
+                    this.OrderId = ((OrderDateUpdated)myevent).OrderId;
+
+                    break;
                 default:
                     new OrdersException("invalid state!!");
                     break;
