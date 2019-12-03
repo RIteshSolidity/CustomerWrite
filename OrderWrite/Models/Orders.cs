@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using OrderWrite.Events;
 
 namespace OrderWrite.Models
 {
@@ -16,24 +17,80 @@ namespace OrderWrite.Models
     //        }
     //    }
     //}
+
+    public enum OrderState { 
+        OrderCreated,
+        OrderApproved,
+        OrderRejected,
+        OrderFulfilled
+    }
 // root aggregate
-    public class Orders
+    public class Orders : Entity
     {
-        public Orders(int orderid)
+
+        public override void CheckValidity() {
+            switch (state) {
+                case OrderState.OrderCreated:
+                    if (OrderId == default)
+                    {
+                        throw new OrdersException("order id is wrong !!");
+                    }
+                    if (OrderDate < DateTime.Now)
+                    {
+                        throw new OrdersException("order date is wrong !!");
+                    }
+                    break;
+                default:
+                    new OrdersException("invalid state!!");
+                    break;
+            }
+
+        }
+        public Orders(int orderid, CustomerName cu,  DateTime odate, List<OrderLineItems> oli )
         {
-            OrderItems = new List<OrderLineItems>();
-            
+            apply(new OrderCreated() {
+                OrderItems = oli,
+                OrderId = orderid,
+                customer = cu,
+                OrderDate = odate,
+                EventType = "OrderCreated"
+        });
+            state = OrderState.OrderCreated;
+      
         }
         private Orders()
         {
-
+            
         }
-        public int OrderId { get; set; }
 
-        public CustomerName customer { get; set; }
-        public DateTime OrderDate { get; set; }
+        public void UpdateOrderDate(DateTime odt) {
+            OrderDate = odt;
+            CheckValidity();
+        }
 
-        public List<OrderLineItems> OrderItems { get; set; }
+        public override void when(IEvents myevent)
+        {
+            switch (state)
+            {
+                case OrderState.OrderCreated:
+                    this.customer = ((OrderCreated)myevent).customer;
+                    this.OrderDate = ((OrderCreated)myevent).OrderDate;
+                    this.OrderId = ((OrderCreated)myevent).OrderId;
+                    this.OrderItems = ((OrderCreated)myevent).OrderItems;
+                     break;
+                default:
+                    new OrdersException("invalid state!!");
+                    break;
+            }
+        }
+
+        public OrderState state;
+        public int OrderId { get; private set; }
+
+        public CustomerName customer { get; private set; }
+        public DateTime OrderDate { get; private set; }
+
+        public List<OrderLineItems> OrderItems { get; private set; }
     }
 
     //  value type
